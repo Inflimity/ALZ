@@ -134,26 +134,29 @@
           $('html, body').stop().animate({
               scrollTop: (target.offset().top) + 1
           }, 500, 'swing', function () {
-              window.location.hash = target;
+              window.location.hash = this.hash;
               $(document).on("scroll", onScroll);
           });
       });
   });
 
-  function onScroll(event){
-      var scrollPos = $(document).scrollTop();
-      $('.nav a').each(function () {
-          var currLink = $(this);
-          var refElement = $(currLink.attr("href"));
-          if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-              $('.nav ul li a').removeClass("active");
-              currLink.addClass("active");
-          }
-          else{
-              currLink.removeClass("active");
-          }
-      });
-  }
+function onScroll(event){
+  var scrollPos = $(document).scrollTop();
+  $('.nav a').each(function () {
+      var currLink = $(this);
+      var refElement = $(currLink.attr("href"));
+
+      if (refElement.length) { // ✅ check element exists
+        if (refElement.position().top <= scrollPos &&
+            refElement.position().top + refElement.height() > scrollPos) {
+            $('.nav ul li a').removeClass("active");
+            currLink.addClass("active");
+        } else {
+            currLink.removeClass("active");
+        }
+      }
+  });
+}
 
 
 
@@ -253,11 +256,13 @@ const appearOptions = {
   rootMargin: "0px 0px -50px 0px"
 };
 
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+const appearOnScroll = new IntersectionObserver(function(entries) {
   entries.forEach(entry => {
     if(entry.isIntersecting){
       entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+      
+    }else{
+      entry.target.classList.remove('visible'); //fade out when leaving
     }
   });
 }, appearOptions);
