@@ -118,27 +118,30 @@
   $(document).ready(function () {
       $(document).on("scroll", onScroll);
       
-      //smoothscroll
-      $('.scroll-to-section a[href^="#"]').on('click', function (e) {
-          e.preventDefault();
-          $(document).off("scroll");
-          
-          $('.scroll-to-section a').each(function () {
-              $(this).removeClass('active');
-          })
-          $(this).addClass('active');
-        
-          var target = this.hash,
-          menu = target;
-          var target = $(this.hash);
-          $('html, body').stop().animate({
-              scrollTop: (target.offset().top) + 1
-          }, 500, 'swing', function () {
-              window.location.hash = this.hash;
-              $(document).on("scroll", onScroll);
-          });
-      });
+  $('.scroll-to-section a[href^="#"]').on('click', function (e) {
+  e.preventDefault();
+  $(document).off("scroll");
+
+  $('.scroll-to-section a').removeClass('active');
+  $(this).addClass('active');
+
+  var hash = this.hash;
+  var $target = $(hash);
+
+  if ($target.length) { // ✅ only if element exists
+    $('html, body').stop().animate({
+      scrollTop: ($target.offset().top) + 1
+    }, 500, 'swing', function () {
+      window.location.hash = hash;
+      $(document).on("scroll", onScroll);
+    });
+  } else {
+    console.warn("No element found for hash:", hash);
+  }
   });
+});
+
+
 
 function onScroll(event){
   var scrollPos = $(document).scrollTop();

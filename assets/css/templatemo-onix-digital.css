@@ -137,7 +137,7 @@ global styles
 */
 html,
 body {
-  background: #fff;
+  background: #f7f7f7;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -1011,8 +1011,6 @@ Banner Style
 }
 
 .main-banner .owl-dot:before {
-  counter-increment: dots;
-  content: counter(dots);
   font-size: 20px;
   font-weight: 500;
   margin-left: 10px;
@@ -1022,12 +1020,29 @@ Banner Style
   text-align: center;
   border-bottom: 3px solid transparent;
   transition: all .5s;
+  content: ""; /* reset default counter */
 }
 
+/* Replace 1, 2, 3 with A, L, Z */
+.main-banner .owl-dot:nth-child(1):before {
+  content: "A";
+}
+.main-banner .owl-dot:nth-child(2):before {
+  content: "L";
+}
+.main-banner .owl-dot:nth-child(3):before {
+  content: "Z";
+}
+
+/* Active state */
 .main-banner .owl-dot.active:before {
   color: #da9100;
   border-bottom: 3px solid #da9100;
 }
+
+
+
+
 .owl-carousel .item.header-text {
   position: relative;         /* remove absolute positioning */
   top: auto;
@@ -1112,10 +1127,11 @@ Services Style
   background-size: cover;
 }
 .our-services .item .icon {
-  width: 320px;
+  width: 300px;
   height: 250px;
   margin: 0 auto;
   margin-bottom: -20px;
+  margin-left: -10px;
 }
 
 .our-services .item p {
@@ -1123,6 +1139,7 @@ Services Style
   padding-top: 30px;
   border-top: 1px solid #eee;
 }
+
 
 .our-services .owl-dots {
   text-align: center;
@@ -1274,8 +1291,8 @@ Portfolio
   transition: all .5s;
   bottom: -240px;
   right: 30px;
-  width: 239px;
-  height: 210px;
+  width: 200px;
+  height: 200px;
 }
 
 .our-portfolio .item .hover-effect .inner-content {
@@ -1389,9 +1406,27 @@ Portfolio
 
 /* 
 ---------------------------------------------
-Pricing
+Pricing services continuation
 --------------------------------------------- 
 */
+
+.pricing-tables .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pricing-tables .col-lg-4 {
+  display: flex;
+}
+
+/* .pricing-tables .item {
+  flex: 1; /* expand to same height 
+  display: flex;
+  flex-direction: column; /* so button stays at bottom 
+  justify-content: space-between;
+  width: 100%;
+} */
+
 
 .pricing-tables .tables-left-dec img {
   width: 418px;
@@ -1440,6 +1475,12 @@ Pricing
   text-align: center;
   box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
   border-radius: 45px;
+  flex: 1; /* expand to same height */
+  display: flex;
+  flex-direction: column; /* so button stays at bottom */
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 .pricing-tables .item h4 {
@@ -1602,6 +1643,16 @@ Video
   right: 0;
   top: 45px;
   position: absolute;
+}
+
+.newly{
+  border: 2px solid yellow;
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+  height: 330px;
+  margin-top: -300px;
+  margin-left: 100px;
 }
 
 .our-videos {
@@ -1784,6 +1835,9 @@ testimony
 /* Custom controls */
   .custom-control {
     filter: invert(1); /* makes arrows black on light background */
+    margin-top: -15px;
+    width: 40px;
+    height: 40px;
   }
 
   .shadow {
@@ -1894,6 +1948,22 @@ contact
 
 .contact-us .info span a:hover{
   color: #da9100;
+}
+
+.contactH4{
+  text-align: left;
+  font-family: 'Dancing Script';
+  margin-top: -10px;
+  font-size: 40px;
+  
+}
+
+.contacttext{
+  text-align:left;
+  font-family: 'Alfa Slab';
+  font-size: 17.5px;
+  width: 300px;
+  margin-top: -5px;
 }
 
 form#contact {
