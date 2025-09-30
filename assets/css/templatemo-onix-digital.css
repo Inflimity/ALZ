@@ -1116,28 +1116,27 @@ Services Style
   box-shadow: 0px 0px 15px rgba(0,0,0,0.05);
 }
 
-.our-services .item h4 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2a2a2a;
-  margin-bottom: 30px;
-  line-height: 30px;
-}
+
 .icon {
   background-size: cover;
 }
 .our-services .item .icon {
-  width: 300px;
-  height: 250px;
+  object-fit: contain;
+  width: 250px;
+  height: 200px;
   margin: 0 auto;
-  margin-bottom: -20px;
-  margin-left: -10px;
+  margin-bottom: -15px;
+  margin-top: -10px;
+  overflow: hidden;
+}
+
+.Trgimg{
+  overflow: hidden;
+  margin-bottom: 10px
 }
 
 .our-services .item p {
-  margin-top: 35px;
-  padding-top: 30px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #da9100;
 }
 
 
@@ -1181,7 +1180,7 @@ About
 
 .about-us {
   margin-top: 0px;
-  padding-top: 120px;
+  padding-top: 100px;
 }
 
 .about-us .left-image {
@@ -1193,7 +1192,7 @@ About
 }
 
 .about-us .section-heading p {
-  margin-top: 50px;
+  margin-top: 15px;
 }
 
 .about-us .fact-item .icon {
@@ -1419,14 +1418,6 @@ Pricing services continuation
   display: flex;
 }
 
-/* .pricing-tables .item {
-  flex: 1; /* expand to same height 
-  display: flex;
-  flex-direction: column; /* so button stays at bottom 
-  justify-content: space-between;
-  width: 100%;
-} */
-
 
 .pricing-tables .tables-left-dec img {
   width: 418px;
@@ -1535,7 +1526,7 @@ Pricing services continuation
 
 /* 
 ---------------------------------------------
-Subscribe
+Subscribe Whatsapp
 --------------------------------------------- 
 */
 
@@ -1625,7 +1616,7 @@ Subscribe
 
 /* 
 ---------------------------------------------
-Video
+Video Portfolio
 --------------------------------------------- 
 */
 
@@ -1830,6 +1821,7 @@ testimony
 .testimony h2{
   font-family: 'Dancing Script';
   font-weight: bold;
+  color:var(#2a2a2a);
 }
 
 /* Custom controls */
