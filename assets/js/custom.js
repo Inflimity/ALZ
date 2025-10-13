@@ -308,6 +308,58 @@ counters.forEach(counter => {
 });
 
 
+//modal processing for submission
+document.addEventListener("DOMContentLoaded", function() {
+  const forms = document.querySelectorAll("form[action='https://api.web3forms.com/submit']");
+  const popup = document.getElementById("popupModal");
+  const closePopup = document.getElementById("closePopup");
+
+  forms.forEach(form => {
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector("button[type='submit']");
+      const originalText = submitBtn.textContent;
+
+      // Disable button and show loading text
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Processing...";
+      submitBtn.style.opacity = "0.7";
+      submitBtn.style.cursor = "not-allowed";
+
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData
+        });
+
+        if (response.ok) {
+          popup.style.display = "flex";
+          form.reset();
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        alert("Network error. Please try again.");
+      }
+
+      // Restore button state
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      submitBtn.style.opacity = "1";
+      submitBtn.style.cursor = "pointer";
+    });
+  });
+
+  closePopup.onclick = () => popup.style.display = "none";
+  window.onclick = (e) => {
+    if (e.target === popup) popup.style.display = "none";
+  };
+});
+
+
+
 
 
 })(window.jQuery);
