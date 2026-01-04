@@ -1296,6 +1296,35 @@ About
   padding-top: 100px;
 }
 
+.left-image {
+  /* Optional: ensures the container fits the image snugly */
+  display: inline-block;
+  /* Needed to contain the mask on some browsers */
+  overflow: hidden;
+}
+
+.left-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  /* THE BORDER FADE EFFECT */
+
+  /* Vendor prefix for Safari/older Chrome */
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent, black 15%, black 85%, transparent),
+    linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-composite: source-in;
+
+
+  /* Standard syntax */
+  mask-image:
+    linear-gradient(to bottom, transparent, black 15%, black 85%, transparent),
+    linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  /* This combines the two masks so only the overlapping area (center) is shown */
+  mask-composite: intersect;
+}
+
 .about-us .left-image {
   margin-right: 30px;
 }
