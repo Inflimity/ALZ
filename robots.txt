@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alztrust.com/sitemap.xml
+Sitemap: https://alz-trust.com.ng/sitemap.xml
